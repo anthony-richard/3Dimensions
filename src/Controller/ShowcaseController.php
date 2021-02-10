@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShowcaseController extends AbstractController
 {
     /**
-     * @Route("/showcase", name="showcase")
+     * @Route("/", name="showcase_home")
      */
     public function index(): Response
     {
@@ -19,8 +19,10 @@ class ShowcaseController extends AbstractController
     }
 
     /**
-     * @Route("/showcase/model3D/{id}", name="showcase_model3D")
+     * @Route("/model3D/{id}", name="showcase_model3D")
      */
+
+    //  id à mettre en param
     public function model3D(): Response
     {
         return $this->render('showcase/model3D.html.twig', [
@@ -29,7 +31,7 @@ class ShowcaseController extends AbstractController
     }
 
     /**
-     * @Route("/showcase/profil", name="showcase_profil")
+     * @Route("/profil", name="showcase_profil")
      */
     public function profil(): Response
     {
@@ -39,7 +41,7 @@ class ShowcaseController extends AbstractController
     }
 
     /**
-     * @Route("/showcase/updateModel3D", name="showcase_updateModel3D")
+     * @Route("/updateModel3D", name="showcase_updateModel3D")
      */
     public function updateModel3D(): Response
     {
