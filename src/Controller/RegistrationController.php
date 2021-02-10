@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SecurityController extends AbstractController
+class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/security", name="security")
+     * @Route("/registration", name="registration")
      */
     public function index(): Response
     {
-        return $this->render('security/index.html.twig', [
-            'controller_name' => 'SecurityController',
+        return $this->render('registration/index.html.twig', [
+            'controller_name' => 'RegistrationController',
         ]);
     }
 }
