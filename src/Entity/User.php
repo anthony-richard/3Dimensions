@@ -3,15 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User
 {
@@ -23,80 +18,91 @@ class User
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=Administrator::class, cascade={"persist", "remove"})
+     * @ORM\Column(type="string", length=255)
      */
-    private $Administrator;
+    private $lastname;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Comment::class, inversedBy="users")
+     * @ORM\Column(type="string", length=255)
      */
-    private $comment;
+    private $firstname;
 
     /**
-     * @ORM\OneToMany(targetEntity=Model3D::class, mappedBy="users")
+     * @ORM\Column(type="string", length=255)
      */
-    private $model3Ds;
+    private $email;
 
-    public function __construct()
-    {
-        $this->model3Ds = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $role;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getAdministrator(): ?Administrator
+    public function getLastname(): ?string
     {
-        return $this->Administrator;
+        return $this->lastname;
     }
 
-    public function setAdministrator(?Administrator $Administrator): self
+    public function setLastname(string $lastname): self
     {
-        $this->Administrator = $Administrator;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
-    public function getComment(): ?Comment
+    public function getFirstname(): ?string
     {
-        return $this->comment;
+        return $this->firstname;
     }
 
-    public function setComment(?Comment $comment): self
+    public function setFirstname(string $firstname): self
     {
-        $this->comment = $comment;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Model3D[]
-     */
-    public function getModel3Ds(): Collection
+    public function getEmail(): ?string
     {
-        return $this->model3Ds;
+        return $this->email;
     }
 
-    public function addModel3D(Model3D $model3D): self
+    public function setEmail(string $email): self
     {
-        if (!$this->model3Ds->contains($model3D)) {
-            $this->model3Ds[] = $model3D;
-            $model3D->setUsers($this);
-        }
+        $this->email = $email;
 
         return $this;
     }
 
-    public function removeModel3D(Model3D $model3D): self
+    public function getPassword(): ?string
     {
-        if ($this->model3Ds->removeElement($model3D)) {
-            // set the owning side to null (unless already changed)
-            if ($model3D->getUsers() === $this) {
-                $model3D->setUsers(null);
-            }
-        }
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getRole(): ?bool
+    {
+        return $this->role;
+    }
+
+    public function setRole(bool $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

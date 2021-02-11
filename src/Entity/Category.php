@@ -20,13 +20,18 @@ class Category
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Model3D::class)
+     * @ORM\Column(type="string", length=255)
      */
-    private $models3D;
+    private $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Model::class, mappedBy="category")
+     */
+    private $models;
 
     public function __construct()
     {
-        $this->models3D = new ArrayCollection();
+        $this->models = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -34,26 +39,44 @@ class Category
         return $this->id;
     }
 
-    /**
-     * @return Collection|Model3D[]
-     */
-    public function getModels3D(): Collection
+    public function getType(): ?string
     {
-        return $this->models3D;
+        return $this->type;
     }
 
-    public function addModels3D(Model3D $models3D): self
+    public function setType(string $type): self
     {
-        if (!$this->models3D->contains($models3D)) {
-            $this->models3D[] = $models3D;
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Model[]
+     */
+    public function getModels(): Collection
+    {
+        return $this->models;
+    }
+
+    public function addModel(Model $model): self
+    {
+        if (!$this->models->contains($model)) {
+            $this->models[] = $model;
+            $model->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeModels3D(Model3D $models3D): self
+    public function removeModel(Model $model): self
     {
-        $this->models3D->removeElement($models3D);
+        if ($this->models->removeElement($model)) {
+            // set the owning side to null (unless already changed)
+            if ($model->getCategory() === $this) {
+                $model->setCategory(null);
+            }
+        }
 
         return $this;
     }

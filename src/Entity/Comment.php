@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,63 +18,59 @@ class Comment
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="comment")
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $users;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $comment;
+    private $text;
 
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity=Model::class, inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $model;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
+    public function getUsers(): ?User
     {
         return $this->users;
     }
 
-    public function addUser(User $user): self
+    public function setUsers(?User $users): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->setComment($this);
-        }
+        $this->users = $users;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function getText(): ?string
     {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getComment() === $this) {
-                $user->setComment(null);
-            }
-        }
+        return $this->text;
+    }
+
+    public function setText(string $text): self
+    {
+        $this->text = $text;
 
         return $this;
     }
 
-    public function getComment(): ?string
+    public function getModel(): ?Model
     {
-        return $this->comment;
+        return $this->model;
     }
 
-    public function setComment(string $comment): self
+    public function setModel(?Model $model): self
     {
-        $this->comment = $comment;
+        $this->model = $model;
 
         return $this;
     }

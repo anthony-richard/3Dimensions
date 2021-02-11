@@ -1,13 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+  <head>
+    {# own encoding #}
+    <meta charset="UTF-8" />
+    {# web description #}
+    <meta name="description" content="Partager vos modèles 3D !" />
+    {# Pour le responsive #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {# allows the robot to index the site #}
+    <meta name="robots" content="index, follow" />
+    {# keywords #}
+    <meta name="keywords" content="3D" />
+    {# title #}
+    <title>{% block title %}Accueil{% endblock %}</title>
+    {# creation date #}
+    <meta name="Date-Creation-yyyymmdd" content="20210208 11:06:33.18" />
+    {# author #}
+    <meta name="author" content="Anthony Richard" />
+    {# favicon #}
+    <link rel="icon" type="image/png" alt="icon" href="../pictures/cube.png" />
 
-        {% block javascripts %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {# link framework for stylesheet #}
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/4/lumen/bootstrap.min.css"
+    />
+    {% block stylesheets %}{% endblock %}
+  </head>
+
+  <body>
+  {# navBar #}
+    {# icon #}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="/"
+        ><img src="{{ asset('pictures/cube.png') }}" alt="icon cube"
+      /></a>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        {# search bar #}
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="text"
+            placeholder="Search"
+          />
+
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+            Recherche
+          </button>
+        </form>
+
+        {# link #}
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/registration">Inscription</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block body %}{% endblock %}
+  </body>
 </html>
