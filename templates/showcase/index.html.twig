@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Modèles 3D{% endblock %}
+{% block scripts %}
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
 
 {% block body %}
-home
+<div class="card">
+  <div class="card-body">
+    <p class="card-title">Astronaute</p>
+  </div>
+    <model-viewer src="{{ asset('model/Astronaut.glb') }} " alt="A 3D model of an astronaut" auto-rotate camera-controls><mode-viewer>
+</div>
+
+<div class="card text-white bg-dark mb-3">
+  <div class="card-body">
+    <p class="card-title">Astronaute</p>
+  </div>
+    <model-viewer src="{{ asset('model/Astronaut.glb') }} " alt="A 3D model of an astronaut" auto-rotate camera-controls><mode-viewer>
+</div>
+
+
 {% endblock %}
+
