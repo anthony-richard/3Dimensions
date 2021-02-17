@@ -1,21 +1,52 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Inscription{% endblock %} {%
+block body %} {% for flashError in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
 
-{% block title %}Register{% endblock %}
+<h1>Inscrivez-vous</h1>
 
-{% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
+{{ form_start(registrationForm) }}
+{{ form_row(registrationForm.lastname,{'label':"Nom : ",'attr' : {'placeholder': "Votre Nom"}}) }}
+{{ form_row(registrationForm.firstname,{'label':"Pénom : ",'attr' : {'placeholder': "Votre Prénom"}}) }}
+{{ form_row(registrationForm.email,{'label':"Email : ",'attr' : {'placeholder': "Votre email"}}) }}
+{{ form_row(registrationForm.plainPassword, {'label':"Mot de passe : ",'attr': {'placeholder' : "Votre mot de passe"} })}}
 
-    <h1>Register</h1>
+<button type="submit" class="btn btn-lg btn-primary">Inscription</button>
+{{ form_end(registrationForm) }}
+{% endblock %} {% block footer %}
+<footer class="bg-primary text-white text-center text-lg-start">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Footer Content</h5>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <p>Lorem ipsum</p>
+      </div>
+      <!--Grid column-->
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-0">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!" class="text-white">Link 1</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright
+  </div>
+  <!-- Copyright -->
+</footer>
 {% endblock %}

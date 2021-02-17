@@ -5,12 +5,12 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="L'email que vous avez indiqué est déjà utilisé !")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -107,5 +107,30 @@ class User
         $this->role = $role;
 
         return $this;
+    }
+
+    public function getRoles(): ?array
+    {
+        return array('ROLE_USER');
+    }
+
+    public function setRoles(bool $role): self
+    {
+        return $this->setRole($role);
+    }
+
+    public function eraseCredentials()
+    {
+        
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function getUsername()
+    {
+        
     }
 }
