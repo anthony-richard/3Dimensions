@@ -1,8 +1,14 @@
-{% extends 'base.html.twig' %} {% block title %}Inscription{% endblock %} {%
-block body %} {% for flashError in app.flashes('verify_email_error') %}
+{% extends 'base.html.twig' %} {% block title %}Inscription{% endblock %} 
+{% block stylesheets %}<link
+      rel="stylesheet"
+      href="{{ asset('css/form.css') }}"
+    />{% endblock %}
+{% block body %} 
+{% for flashError in app.flashes('verify_email_error') %}
 <div class="alert alert-danger" role="alert">{{ flashError }}</div>
 {% endfor %}
 
+<form class ="form">
 <h1>Inscrivez-vous</h1>
 
 {{ form_start(registrationForm) }}
@@ -13,40 +19,42 @@ block body %} {% for flashError in app.flashes('verify_email_error') %}
 
 <button type="submit" class="btn btn-lg btn-primary">Inscription</button>
 {{ form_end(registrationForm) }}
-{% endblock %} {% block footer %}
-<footer class="bg-primary text-white text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Footer Content</h5>
+<form>
 
-        <p>Lorem ipsum</p>
-      </div>
-      <!--Grid column-->
+  {% block footer %}
+    <footer class="bg-primary text-white text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">E-mail</h5>
+            <a href="mailto:anthonyrichard55200@gmail.com" class="text-white"><i class="fas fa-envelope" alt="enveloppe"></i></a>
+            </form>
+        </div>
+        <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-0">Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!" class="text-white">Link 1</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-0">Réseaux sociaux</h5>
+            <ul class="list-unstyled">
+            <li>
+                <a href="https://www.linkedin.com/in/anthony-richard-1361811aa/" target="_blank" class="text-white"><i class="fab fa-linkedin"alt="logo linkedin"></i></a>
+            </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+        </div>
+        <!--Grid row-->
     </div>
-    <!--Grid row-->
-  </div>
-  <!-- Grid container -->
+    <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-    © 2020 Copyright
-  </div>
-  <!-- Copyright -->
-</footer>
+    <!-- Copyright -->
+    <div class="cp">
+        © 2020 Copyright
+    </div>
+    <!-- Copyright -->
+    </footer>
+    {% endblock %}
 {% endblock %}

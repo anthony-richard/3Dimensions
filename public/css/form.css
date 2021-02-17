@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body .form{
+    height: 66vh;
+}
+
+footer .fa-envelope, .fa-linkedin {
+    font-size: 25px;
+}
+
+footer .cp{
+    text-align: center;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.2);
+}

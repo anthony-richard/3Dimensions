@@ -1,6 +1,12 @@
-{% extends 'base.html.twig' %} {% block title %}Connexion{% endblock %} {% block
-body %}
-<form method="post">
+{% extends 'base.html.twig' %}
+{% block title %}Connexion{% endblock %} 
+{% block stylesheets %}<link
+      rel="stylesheet"
+      href="{{ asset('css/form.css') }}"
+    />{% endblock %}
+
+{% block body %}
+<form method="post" class="form">
   {% if error %}
   <div class="alert alert-danger">
     {{ error.messageKey|trans(error.messageData, 'security') }}
@@ -42,41 +48,42 @@ body %}
 
   <button class="btn btn-lg btn-primary" type="submit">Connexion</button>
 </form>
-{% endblock %}
-{% block footer %}
-<footer class="bg-primary text-white text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Footer Content</h5>
 
-        <p>Lorem ipsum</p>
-      </div>
-      <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-0">Links</h5>
+    {% block footer %}
+    <footer class="bg-primary text-white text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">E-mail</h5>
+            <a href="mailto:anthonyrichard55200@gmail.com" class="text-white"><i class="fas fa-envelope" alt="enveloppe"></i></a>
+            </form>
+        </div>
+        <!--Grid column-->
 
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!" class="text-white">Link 1</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase mb-0">Réseaux sociaux</h5>
+            <ul class="list-unstyled">
+            <li>
+                <a href="https://www.linkedin.com/in/anthony-richard-1361811aa/" target="_blank" class="text-white"><i class="fab fa-linkedin" alt="logo linkedin"></i></a>
+            </li>
+            </ul>
+        </div>
+        <!--Grid column-->
+        </div>
+        <!--Grid row-->
     </div>
-    <!--Grid row-->
-  </div>
-  <!-- Grid container -->
+    <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-    © 2020 Copyright
-  </div>
-  <!-- Copyright -->
-</footer>
+    <!-- Copyright -->
+    <div class="cp">
+        © 2020 Copyright
+    </div>
+    <!-- Copyright -->
+    </footer>
+    {% endblock %}
 {% endblock %}
