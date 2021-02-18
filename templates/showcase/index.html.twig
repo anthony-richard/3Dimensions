@@ -13,16 +13,11 @@
   <div class="card-body">
     <p class="card-title">Astronaute</p>
   </div>
-    <model-viewer src="{{ asset('model/Astronaut.glb') }} " alt="A 3D model of an astronaut" auto-rotate camera-controls><mode-viewer>
+  
+  <a href="/model3D/{id}">
+    <model-viewer src="{{ asset('model/Astronaut.glb') }} " alt="A 3D model of an astronaut" auto-rotate><mode-viewer>
+  </a>
 </div>
-
-<div class="card text-white bg-dark mb-3">
-  <div class="card-body">
-    <p class="card-title">Astronaute</p>
-  </div>
-    <model-viewer src="{{ asset('model/radiance.glb') }} " alt="A 3D model of an astronaut" auto-rotate camera-controls><mode-viewer>
-</div>
-
 
 {% endblock %}
 
