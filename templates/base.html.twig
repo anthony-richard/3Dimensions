@@ -20,7 +20,10 @@
     {# favicon #}
     <link rel="icon" type="image/png" alt="icon" href="../pictures/cube.png" />
     {# link for icons #}
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
     {# link framework for stylesheet #}
     <link
       rel="stylesheet"
@@ -52,19 +55,26 @@
 
         {# link #}
         <ul class="navbar-nav">
+          {% if not app.user %}
           <li class="nav-item">
             <a class="nav-link" href="/login">Connexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/register">Inscription</a>
           </li>
+          {% endif %} {% if app.user %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="/profil">Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Déconnexion</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
     </nav>
   </header>
 
-    {% block body %}
-      {% block footer %}
-      {% endblock %}
-    {% endblock %}
+  {% block body %} {% block footer %} {% endblock %} {% endblock %}
 </html>
