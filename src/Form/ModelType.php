@@ -16,7 +16,6 @@ class ModelType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('users')
-            ->add('category')
         ;
     }
 
